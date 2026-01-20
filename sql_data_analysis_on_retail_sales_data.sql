@@ -76,5 +76,19 @@ select * from retail_sales where transaction_id is null or sale_date is null or 
  select count(distinct customer_id) as total_customers from retail_sales; -- we have 155 customers the data we have is having 155 unique customers
  
 
+-- now iam going to solve some bussiness questions
+-- here in this cogs means actullay this store by products from the other store and resell them with their own price
 
+-- so iam calculating this total amount invested using this cogs*quantity which gives me this total amount spent by the store
+select * from retail_sales;
+select sum(total_sale) as total_revenue,sum(quantity*cogs) as total_amount,sum(total_sale)-sum(quantity*cogs) as total_profit from retail_sales; -- here we got the profit for this store
 
+-- Which categories are actually making the most money for the business
+
+select category,sum(total_sale) as total_sale_per_cat from retail_sales group by category order by total_sale_per_cat desc;
+
+-- Are we selling anything at a loss? If yes, what and how bad is it
+
+SELECT transaction_id,category,price_per_unit,cogs,quantity,total_sale,(price_per_unit - cogs) * quantity AS loss_amount
+FROM retail_sales
+WHERE price_per_unit < cogs order by loss_amount;
