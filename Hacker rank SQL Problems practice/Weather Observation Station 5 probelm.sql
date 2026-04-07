@@ -1,0 +1,14 @@
+/*Query the two cities in STATION with the shortest and longest CITY names as well as their respective lengths 
+(i.e.: number of characters in the name). 
+If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.*/
+
+(SELECT CITY,LEN(CITY) FROM STATION ORDER BY LEN(CITY),CITY -- FROM THIS WE CAN GET THIS SHORTEST CITY NAME WITH LENGTH
+
+UNION -- USED FOR COMBINIG TWO ROWS 
+
+(SELECT CITY,LEN(CITY) FROM STATION ORDER BY LEN(CITY) DESC,CITY); -- FROM THIS WE CAN GET THIS LARGEST CITY WITH LENGTH
+
+
+-- HERE WHILE DOING UNION WE NEED TO USE THIS ORDER BY IN THE WHOLE QUEY ONLY ONECE
+-- BUT IN THIS CASE WE HAVE TO USE TWO ORDER BY SO 
+-- I WARPPED THEM UP TO GET THE COMPLETE OUTPUT INDIVIDUALLY FROM EACH QUEY AND THAT RESULT IS BEING ADDED
