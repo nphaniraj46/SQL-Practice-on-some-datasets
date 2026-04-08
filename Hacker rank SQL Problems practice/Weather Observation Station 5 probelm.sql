@@ -2,7 +2,7 @@
 (i.e.: number of characters in the name). 
 If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.*/
 
-(SELECT CITY,LEN(CITY) FROM STATION ORDER BY LEN(CITY),CITY -- FROM THIS WE CAN GET THIS SHORTEST CITY NAME WITH LENGTH
+(SELECT CITY,LEN(CITY) FROM STATION ORDER BY LEN(CITY),CITY) -- FROM THIS WE CAN GET THIS SHORTEST CITY NAME WITH LENGTH
 
 UNION -- USED FOR COMBINIG TWO ROWS 
 
